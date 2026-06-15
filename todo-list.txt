@@ -16,4 +16,11 @@ Make sure units that reach a destroyed castle checkpoint continue to move to the
 Only play audio from things that are in the player's viewport
 Make sure the player can only control their own units and not the enemy's units or buildings
 Keep the player who created the lobby as the host so they can pick the game's settings
+Allow the player to pick an emoji as an avatar
+Remove game speed settings and make the game run at a constant speed
+Change AI difficulty to be per computer/ai
+Add more detailed terrain and map features to make the game more visually appealing
+add fog of war to the map so that players cannot see enemy units or buildings unless they are in their line of sight
+Add tabs to the chat box - one for global chat, one for team chat, and one for private messages
+Make sure the player can only see their own resources and not the enemy's resources
 

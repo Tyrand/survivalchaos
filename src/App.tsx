@@ -516,8 +516,6 @@ Survival Chaos
 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
 ONLINE
 </span>
-<span className="text-slate-700">|</span>
-<span>Custom Rooms</span>
 </div>
 </div>
 

@@ -1,0 +1,6 @@
+{
+  "name": "Survival Chaos Battle Prototype",
+  "description": "A server-authoritative multiplayer auto-battler game based on Survival Chaos, featuring lane-based base defense, automatic spawning, and player upgrade mechanics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

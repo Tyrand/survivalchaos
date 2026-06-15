@@ -1,0 +1,462 @@
+@import "tailwindcss";
+
+:root {
+--browser-chrome: 120px;
+--app-height: calc(100vh - var(--browser-chrome));
+}
+
+html, body, #root {
+width: 100%;
+height: 100%;
+}
+
+html, body {
+margin: 0;
+overflow: hidden;
+background: #020617;
+}
+
+#root {
+overflow: hidden;
+}
+
+/* Warcraft III Typography styles */
+.font-w3-title {
+font-family: 'Cinzel', serif;
+letter-spacing: 0.05em;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.font-w3-medieval {
+font-family: 'MedievalSharp', cursive, sans-serif;
+letter-spacing: 0.02em;
+}
+
+/* Base Font Override for the entire game HUD and buttons */
+body, button, input, select {
+font-family: 'MedievalSharp', cursive, sans-serif;
+}
+
+.app-shell {
+height: var(--app-height);
+max-height: var(--app-height);
+}
+
+.app-shell-scroll {
+min-height: 0;
+overflow-y: auto;
+height: 100%;
+}
+
+@layer components {
+.w3-console {
+position: relative;
+border: 4px solid;
+border-radius: 12px;
+padding: 16px;
+background-size: cover;
+background-position: center;
+box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 10px 25px -5px rgba(0, 0, 0, 0.7);
+transition: all 0.3s ease-in-out;
+}
+
+/* Alliance dynamic console style: Royal blue stone, polished gold trims */
+.w3-console-alliance {
+border-color: #d97706; /* gold trim */
+background-color: #0f172a;
+background-image: 
+radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 40%),
+linear-gradient(to bottom, #111e36, #090e1a);
+box-shadow: inset 0 0 25px rgba(59, 130, 246, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.w3-console-alliance::before {
+content: '';
+position: absolute;
+inset: 2px;
+border: 1px solid rgba(217, 119, 6, 0.3);
+border-radius: 8px;
+pointer-events: none;
+}
+
+/* Horde dynamic console style: Deep red iron clay, iron spikes, dark logs */
+.w3-console-horde {
+border-color: #7f1d1d; /* rusted red iron */
+background-color: #1c0a07;
+background-image: 
+radial-gradient(circle at top left, rgba(239, 68, 68, 0.15), transparent 40%),
+linear-gradient(to bottom, #2d130f, #140806);
+box-shadow: inset 0 0 25px rgba(239, 68, 68, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.w3-console-horde::before {
+content: '';
+position: absolute;
+inset: 2px;
+border: 1px solid rgba(127, 29, 29, 0.4);
+border-radius: 8px;
+pointer-events: none;
+}
+
+/* Scourge dynamic console style: Dark obsidian, crypt purple runes, bone trim */
+.w3-console-scourge {
+border-color: #6b21a8; /* crypt purple */
+background-color: #09050f;
+background-image: 
+radial-gradient(circle at top left, rgba(168, 85, 247, 0.15), transparent 40%),
+linear-gradient(to bottom, #190e29, #0a0512);
+box-shadow: inset 0 0 25px rgba(168, 85, 247, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.w3-console-scourge::before {
+content: '';
+position: absolute;
+inset: 2px;
+border: 1px solid rgba(107, 33, 168, 0.4);
+border-radius: 8px;
+pointer-events: none;
+}
+
+/* Legion dynamic console style: Corrupted fel iron, toxic green highlights */
+.w3-console-legion {
+border-color: #047857; /* fel green */
+background-color: #040807;
+background-image: 
+radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), transparent 40%),
+linear-gradient(to bottom, #0d1a13, #050a07);
+box-shadow: inset 0 0 25px rgba(16, 185, 129, 0.25), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.w3-console-legion::before {
+content: '';
+position: absolute;
+inset: 2px;
+border: 1px solid rgba(4, 120, 87, 0.4);
+border-radius: 8px;
+pointer-events: none;
+}
+
+/* Beveled, Glossy WC3 Health & Mana Status Bars */
+.w3-bar-container {
+background: #020204;
+border: 2px solid #334155;
+border-radius: 4px;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(255, 255, 255, 0.05);
+overflow: hidden;
+}
+
+.w3-hp-bar {
+background: linear-gradient(
+to bottom,
+#4ade80 0%,
+#22c55e 30%,
+#15803d 70%,
+#166534 100%
+);
+box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+height: 100%;
+border-radius: 2px;
+transition: width 0.3s ease-out;
+}
+
+.w3-hp-bar-injured {
+background: linear-gradient(
+to bottom,
+#facc15 0%,
+#eab308 30%,
+#a16207 70%,
+#854d0e 100%
+);
+}
+
+.w3-hp-bar-critical {
+background: linear-gradient(
+to bottom,
+#f87171 0%,
+#ef4444 30%,
+#b91c1c 70%,
+#991b1b 100%
+);
+}
+
+.w3-mana-bar {
+background: linear-gradient(
+to bottom,
+#60a5fa 0%,
+#3b82f6 30%,
+#1d4ed8 70%,
+#1e40af 100%
+);
+box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+height: 100%;
+border-radius: 2px;
+transition: width 0.3s ease-out;
+}
+
+/* Warcraft III Command Card Button styling */
+.w3-cmd-btn {
+position: relative;
+aspect-ratio: 1;
+background-color: #0b0f19;
+border: 3px solid #475569;
+border-radius: 6px;
+box-shadow: 
+inset 0 0 8px rgba(0, 0, 0, 0.9),
+0 2px 4px rgba(0, 0, 0, 0.5);
+transition: all 0.15s ease-in-out;
+overflow: hidden;
+cursor: pointer;
+}
+
+.w3-cmd-btn:hover:not(:disabled) {
+border-color: #fbbf24; /* golden hover glow */
+box-shadow: 
+inset 0 0 4px rgba(251, 191, 36, 0.3),
+0 0 12px rgba(251, 191, 36, 0.4);
+transform: scale(1.03);
+}
+
+.w3-cmd-btn:active:not(:disabled) {
+transform: scale(0.97);
+box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+}
+
+.w3-cmd-btn:disabled {
+filter: grayscale(1) brightness(0.35);
+cursor: not-allowed;
+border-color: #1e293b;
+}
+
+/* Warcraft III command button hotkey indicators */
+.w3-hotkey-badge {
+position: absolute;
+top: 1px;
+left: 1px;
+font-family: 'MedievalSharp', cursive, sans-serif;
+font-size: 10px;
+font-weight: 950;
+color: #fef08a; /* yellow-50 */
+background-color: #7f1d1d; /* deep dark red frame */
+border: 1.5px solid #d97706; /* gold border */
+border-radius: 4px;
+width: 15px;
+height: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+z-index: 10;
+text-shadow: 1px 1px 0px rgba(0,0,0,0.9);
+}
+
+/* Resource Badge style */
+.w3-resource-container {
+display: flex;
+align-items: center;
+gap: 16px;
+background: rgba(15, 23, 42, 0.85);
+border: 2.5px solid #b45309; /* dark gold frame */
+border-radius: 8px;
+padding: 6px 16px;
+box-shadow: inset 0 0 8px rgba(0,0,0,0.9), 0 4px 6px rgba(0,0,0,0.4);
+}
+
+.w3-resource-badge {
+display: flex;
+align-items: center;
+gap: 6px;
+font-family: 'MedievalSharp', cursive, sans-serif;
+font-size: 13px;
+font-weight: bold;
+}
+
+/* Portrait Decorative Frame */
+.w3-portrait-frame {
+position: relative;
+aspect-ratio: 1;
+background-color: #020204;
+border: 3.5px solid #b45309; /* bronze trim */
+border-radius: 8px;
+box-shadow: inset 0 0 15px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.6);
+overflow: hidden;
+}
+
+.w3-portrait-frame::after {
+content: '';
+position: absolute;
+inset: 0;
+box-shadow: inset 0 0 8px rgba(251, 191, 36, 0.15);
+pointer-events: none;
+}
+
+/* Retro WC3 Lobby and Game Mode/Race Selection Styles */
+
+.w3-lobby-overlay {
+position: fixed;
+inset: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(2, 4, 8, 0.95);
+backdrop-filter: blur(8px);
+padding: 16px;
+}
+
+/* Green leaf border styling */
+.w3-leaves-frame {
+position: relative;
+border: 12px solid #142911; /* dark green wood border */
+border-radius: 16px;
+box-shadow: 
+0 0 0 4px #081206, /* outer dark border */
+inset 0 0 20px rgba(0, 0, 0, 0.9),
+0 20px 40px rgba(0, 0, 0, 0.8);
+background: #0f0f12;
+}
+
+.w3-leaves-frame::before {
+content: '';
+position: absolute;
+inset: -14px;
+border: 4px dashed #3f6212; /* vine accents */
+border-radius: 18px;
+pointer-events: none;
+opacity: 0.6;
+}
+
+/* Stone container texturing */
+.w3-modal-stone {
+background-image: 
+radial-gradient(circle at center, rgba(17, 24, 39, 0.25) 0%, rgba(3, 7, 18, 0.8) 100%),
+linear-gradient(to bottom, #1e2530 0%, #0c0e14 100%);
+border: 3px solid #d97706; /* gold trim */
+border-radius: 8px;
+padding: 24px;
+box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
+
+/* WC3 dialog button styling */
+.w3-button-stone {
+display: block;
+width: 100%;
+padding: 12px 24px;
+background: linear-gradient(to bottom, #1a2e1b 0%, #09170a 100%);
+border: 3px solid #d97706; /* gold border */
+border-radius: 6px;
+font-family: 'Cinzel', serif;
+font-size: 14px;
+font-weight: bold;
+text-align: center;
+text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+box-shadow: 
+inset 0 0 8px rgba(0, 0, 0, 0.8),
+0 4px 6px rgba(0, 0, 0, 0.4);
+transition: all 0.2s ease-in-out;
+cursor: pointer;
+}
+
+.w3-button-stone:hover:not(:disabled) {
+background: linear-gradient(to bottom, #2d4c2e 0%, #112d13 100%);
+border-color: #fbbf24;
+box-shadow: 
+inset 0 0 6px rgba(251, 191, 36, 0.3),
+0 0 15px rgba(34, 197, 94, 0.4);
+transform: translateY(-1px);
+}
+
+.w3-button-stone:active:not(:disabled) {
+transform: translateY(1px);
+box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+}
+
+/* 3x4 Race Selector Grid items */
+.w3-race-portrait-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 12px;
+}
+
+.w3-race-portrait {
+position: relative;
+aspect-ratio: 1;
+background-color: #0d1117;
+border: 3px solid #475569;
+border-radius: 8px;
+box-shadow: 
+inset 0 0 10px rgba(0, 0, 0, 0.9),
+0 2px 4px rgba(0, 0, 0, 0.5);
+display: flex;
+flex-col: column;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.15s ease-in-out;
+overflow: hidden;
+}
+
+.w3-race-portrait:hover {
+border-color: #fbbf24;
+box-shadow: 
+inset 0 0 6px rgba(251, 191, 36, 0.3),
+0 0 14px rgba(251, 191, 36, 0.4);
+transform: scale(1.04);
+}
+
+.w3-race-portrait-selected {
+border-color: #10b981; /* green selected border */
+box-shadow: 
+inset 0 0 8px rgba(16, 185, 129, 0.4),
+0 0 18px rgba(16, 185, 129, 0.6);
+background-color: #0b2216;
+}
+
+.w3-race-portrait-locked {
+border-color: #dc2626; /* red locked border */
+box-shadow: 
+inset 0 0 8px rgba(220, 38, 38, 0.4),
+0 0 18px rgba(220, 38, 38, 0.6);
+}
+
+/* Key indicator badges */
+.w3-key-badge {
+position: absolute;
+top: 4px;
+right: 4px;
+font-family: 'Cinzel', serif;
+font-size: 9px;
+font-weight: 950;
+color: #fbbf24;
+background-color: rgba(15, 23, 42, 0.85);
+border: 1px solid #d97706;
+border-radius: 4px;
+width: 14px;
+height: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10;
+}
+
+/* Faction indicator on grid cards */
+.w3-race-faction-label {
+font-size: 8px;
+font-weight: 800;
+letter-spacing: 0.05em;
+opacity: 0.8;
+text-transform: uppercase;
+}
+
+/* Difficulty classes */
+.text-difficulty-beginner {
+color: #22c55e; /* green */
+}
+
+.text-difficulty-advanced {
+color: #06b6d4; /* cyan */
+}
+
+.text-difficulty-skilled {
+color: #f97316; /* orange */
+}
+
+.text-difficulty-expert {
+color: #ef4444; /* red */
+}
+} /* end @layer components */

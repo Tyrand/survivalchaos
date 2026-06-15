@@ -1,0 +1,18 @@
+/* TODO LIST */
+Set Starting Waves: 2 melee, 1 ranged, 1 magic
+To look into the ReferenceDocuments and add all the new information regarding the Human race.
+Implment Right-side Scoreboard
+Save the player's unique ID to localstorage
+Save the player's settings and name to the server's json storage and tag it to their unique ID
+Make the combat slower, units should stay alive longer
+Give units fitting unqiue abilities and skills
+Make sure the bottom-right action setion is 4x3 like WarCraft 3
+Rebalance all units
+Give each unit a unique emoji so that they can be easily identified on the map
+Remove the bottom left player castle health indicators
+Remove builings from the map if they are destroyed
+Cause the player to lose if their castle is destroyed
+Make sure units that reach a destroyed castle checkpoint continue to move to the next checkpoint instead of stopping
+Only play audio from things that are in the player's viewport
+Make sure the player can only control their own units and not the enemy's units or buildings
+

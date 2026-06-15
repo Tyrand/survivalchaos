@@ -15,4 +15,5 @@ Cause the player to lose if their castle is destroyed
 Make sure units that reach a destroyed castle checkpoint continue to move to the next checkpoint instead of stopping
 Only play audio from things that are in the player's viewport
 Make sure the player can only control their own units and not the enemy's units or buildings
+Keep the player who created the lobby as the host so they can pick the game's settings
 

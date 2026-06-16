@@ -1309,27 +1309,6 @@ const hpPct = Math.max(0, hp / maxHp);
 const playerState = gameState.players[t];
 const playerNameLabel = playerState ? playerState.name : `Vacant (${info.faction})`;
 
-return (
-<div
-key={t}
-className="p-3 bg-slate-950/85 border rounded-xl backdrop-blur-sm flex flex-col justify-between"
-style={{ borderColor: isAlive ? `${info.color}35` : '#1e293b' }}
->
-<div className="flex items-center justify-between gap-1">
-<span className="text-[9px] font-bold uppercase text-slate-300 truncate">{info.name}</span>
-<span className="text-[8px] font-bold text-slate-500 uppercase shrink-0">T{t}</span>
-</div>
-<div className="mt-2">
-<div className="flex justify-between items-center text-[9px] leading-none mb-1 font-mono">
-<span className="text-slate-400 truncate pr-1 max-w-[65%]">{playerNameLabel}</span>
-<span className="font-semibold text-slate-200 shrink-0">{isAlive ? `${hp}/${maxHp}` : 'DESTROYED'}</span>
-</div>
-<div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden border border-slate-850">
-<div className="h-full transition-all duration-300" style={{ width: `${hpPct * 100}%`, backgroundColor: info.color }} />
-</div>
-</div>
-</div>
-);
 })}
 </div>
 

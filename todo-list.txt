@@ -1,4 +1,5 @@
 /* TODO LIST */
+Reposition the players so they are in the correct starting positions on the map: North, South, East, West - instead of corners
 Set Starting Waves: 2 melee, 1 ranged, 1 magic
 To look into the ReferenceDocuments and add all the new information regarding the Human race.
 Implment Right-side Scoreboard
@@ -7,7 +8,9 @@ Save the player's settings and name to the server's json storage and tag it to t
 Make the combat slower, units should stay alive longer
 Give units fitting unqiue abilities and skills
 Make sure the bottom-right action setion is 4x3 like WarCraft 3
-Rebalance all units
+Rebalance all units - Use referfence documents where possible to make sure all units are balanced
+Rebalance all buildings - Use reference documents where possible to make sure all buildings are balanced
+Make sure heroes have their abilities shown in their tooltips and they are scripted to be used in combat
 Give each unit a unique emoji so that they can be easily identified on the map
 Remove the bottom left player castle health indicators
 Remove builings from the map if they are destroyed
@@ -23,4 +26,5 @@ Add more detailed terrain and map features to make the game more visually appeal
 add fog of war to the map so that players cannot see enemy units or buildings unless they are in their line of sight
 Add tabs to the chat box - one for global chat, one for team chat, and one for private messages
 Make sure the player can only see their own resources and not the enemy's resources
-
+Default positions are: Red - North, Blue - South, Green - East, Purple - West
+Make sure the main source of gold is from killing enemy units and buildings, not from a constant income
